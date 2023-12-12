@@ -1,2 +1,3 @@
 # Full Stack E Commerce
  
+[In development]This repository hosts a Full Stack E-Commerce solution with a Dashboard & CMS. It explores advanced features, including real-time App Routing with Next.js 13, dynamic UI components using React, responsive styling with Tailwind CSS, efficient database management with Prisma, and reliable data storage with MySQL. Based on [Code With Antonio's tutorial](https://www.youtube.com/watch?v=5miHyP6lExg)
