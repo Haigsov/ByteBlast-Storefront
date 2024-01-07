@@ -5,7 +5,7 @@
 import { useState, useEffect } from "react";
 
 // Local imports
-import { StoreModal } from "@/components/modals/store-modals";
+import { StoreModal } from "@/components/modals/store-modal";
 
 export const ModalProvider = () => {
   // Create a state variable to track whether the modal component is mounted
