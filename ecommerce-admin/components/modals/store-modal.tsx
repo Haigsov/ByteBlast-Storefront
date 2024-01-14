@@ -50,7 +50,7 @@ export const StoreModal = () => {
             // Send a POST request to the "/api/stores" endpoint with the form values
             const response = await axios.post("/api/stores", values);
             
-            toast.success("Store created successfully");  // Display a success toast if the request was successful
+            window.location.assign(`${response.data.id}`);  // Redirect to the newly created store
         }
 
         catch (error) {
