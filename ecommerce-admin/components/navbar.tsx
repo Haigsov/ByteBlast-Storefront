@@ -1,3 +1,4 @@
+/* trunk-ignore-all(prettier) */
 import { UserButton } from "@clerk/nextjs";
 
 import { MainNav } from "@/components/main-nav";
