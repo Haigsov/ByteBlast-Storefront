@@ -1,10 +1,13 @@
 "use client";
 
-import { PopoverTrigger } from "@/components/ui/popover";
-import { Store } from "@prisma/client";
-
-import { useStoreModal } from "@/hooks/use-store-modal";
 import { useParams, useRouter } from "next/navigation";
+import { useState } from "react";
+import { Store as StoreIcon } from "lucide-react";
+
+import { Popover, PopoverTrigger } from "@/components/ui/popover";
+import { Store } from "@prisma/client";
+import { Button } from "@/components/ui/button";
+import { useStoreModal } from "@/hooks/use-store-modal";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>;
 
@@ -27,9 +30,20 @@ export default function StoreSwitcher({
 
     const currentStore = formattedItems.find((item) => item.value === params.storeId);
 
+    const {open, setOpen} = useState(false);
+
+    const onStoreSelect = (store : { label: string; value: string }) => {
+        setOpen(false);
+        router.push(`/${store.value}`);
+    };
+
     return (
-        <div>
-            Store Switcher
-        </div>
+        <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+                <Button>
+                    <StoreIcon />
+                </Button>
+            </PopoverTrigger>
+        </Popover>
     );
 };
