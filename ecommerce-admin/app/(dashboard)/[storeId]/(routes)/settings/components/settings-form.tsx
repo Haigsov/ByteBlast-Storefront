@@ -5,11 +5,19 @@ import * as z from "zod";
 import { Store } from "@prisma/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 
 import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage
+} from "@/components/ui/form";
 
 interface SettingsFormProps {
     initialData: Store;
@@ -26,11 +34,15 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
 }) => {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    
+
     const form = useForm<SettingsFormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: initialData
     });
+
+    const onSubmit = async (data: SettingsFormValues) => {
+        console.log(data);
+    }
 
     return (
         <>
@@ -50,6 +62,27 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                 </Button>
             </div>
             <Separator />
+            <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+                    <div className="grid grid-cols-3 gap-8">
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => <FormItem>
+                                <FormLabel>Name</FormLabel>
+                                <FormControl>
+                                    <input disabled={loading} placeholder="Store name" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                            }
+                        />
+                    </div>
+                    <Button disabled={loading} className="ml-auto" type="submit">
+                        Save changes
+                    </Button>
+                </form>
+            </Form>
         </>
     );
 };
