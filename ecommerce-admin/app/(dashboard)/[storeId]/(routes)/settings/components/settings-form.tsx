@@ -52,9 +52,10 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                     description="Manage store preferences"
                 />
                 <Button
+                    disabled={loading}
                     variant="destructive"
                     size="sm"
-                    onClick={() => {}}
+                    onClick={() => setOpen(true)}
                 >
                     <Trash className="h-4 w-4"/>
 
@@ -68,14 +69,15 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                         <FormField
                             control={form.control}
                             name="name"
-                            render={({ field }) => <FormItem>
-                                <FormLabel>Name</FormLabel>
+                            render={({ field }) => (
+                            <FormItem className="flex flex-col">
+                                <FormLabel className="mb-2">Name</FormLabel>
                                 <FormControl>
                                     <input disabled={loading} placeholder="Store name" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
-                            }
+                            )}
                         />
                     </div>
                     <Button disabled={loading} className="ml-auto" type="submit">
