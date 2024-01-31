@@ -34,6 +34,9 @@ export const AlertModal: React.FC<AlertModalProps> = ({
             isOpen={isOpen}
             onClose={onClose}
         >
+            <div className="pt-6 space-x-2 items-center justify-end">
+
+            </div>
 
         </Modal>
     )
