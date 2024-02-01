@@ -24,6 +24,7 @@ import {
     FormLabel,
     FormMessage
 } from "@/components/ui/form";
+import { AlertModal } from "@/components/modals/alert-modals";
 
 interface SettingsFormProps {
     initialData: Store;
@@ -64,6 +65,12 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
 
     return (
         <>
+            <AlertModal
+                isOpen={open}
+                onClose={() => setOpen(false)}
+                onConfirm={() => {}}
+                loading={loading}
+            />
             <div className="flex items-center justify-between">
                 <Heading
                     title="Settings"
