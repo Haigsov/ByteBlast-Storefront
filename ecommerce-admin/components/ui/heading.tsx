@@ -1,3 +1,4 @@
+/* trunk-ignore-all(prettier) */
 interface HeadingProps {
     title: string;
     description: string;
