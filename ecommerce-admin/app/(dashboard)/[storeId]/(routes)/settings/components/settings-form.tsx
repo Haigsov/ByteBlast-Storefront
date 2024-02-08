@@ -25,6 +25,7 @@ import {
     FormMessage
 } from "@/components/ui/form";
 import { AlertModal } from "@/components/modals/alert-modals";
+import { ApiAlert } from "@/components/ui/api-alert";
 
 interface SettingsFormProps {
     initialData: Store;
@@ -83,7 +84,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
             <AlertModal
                 isOpen={open}
                 onClose={() => setOpen(false)}
-                onConfirm={() => {}}
+                onConfirm={onDelete}
                 loading={loading}
             />
             <div className="flex items-center justify-between">
@@ -125,6 +126,8 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                     </Button>
                 </form>
             </Form>
+            <Separator />
+            <ApiAlert title="test" description="test-desc" variant={"public"}/>
         </>
     );
 };
