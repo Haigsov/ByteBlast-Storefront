@@ -49,8 +49,10 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const title = initialData ? "Edit Billboard" : :"Create Billboard";
-    const description = initialData ? "Edit Billboard" : :"Create Billboard";
+    const title = initialData ? "Edit Billboard" : "Create Billboard";
+    const description = initialData ? "Edit a Billboard" : "Add a new Billboard";
+    const toastMessage = initialData ? "Billboard Updated" : "Billboard created.";
+    const action = initialData ? "Save Changes" : "Create";
 
     const form = useForm<BillboardFormValues>({
         resolver: zodResolver(formSchema),
@@ -98,19 +100,21 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             />
             <div className="flex items-center justify-between">
                 <Heading
-                    title="Settings"
-                    description="Manage store preferences"
+                    title={title}
+                    description={description}
                 />
-                <Button
-                    disabled={loading}
-                    variant="destructive"
-                    size="sm"
-                    onClick={() => setOpen(true)}
-                >
-                    <Trash className="h-4 w-4"/>
+                {initialData && (
+                    <Button
+                        disabled={loading}
+                        variant="destructive"
+                        size="sm"
+                        onClick={() => setOpen(true)}
+                    >
+                        <Trash className="h-4 w-4"/>
 
 
-                </Button>
+                    </Button>
+                )}
             </div>
             <Separator />
             <Form {...form}>
@@ -118,12 +122,12 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
                     <div className="grid grid-cols-3 gap-8">
                         <FormField
                             control={form.control}
-                            name="name"
+                            name="label"
                             render={({ field }) => (
                             <FormItem className="flex flex-col">
-                                <FormLabel className="mb-2">Name</FormLabel>
+                                <FormLabel className="mb-2">Label</FormLabel>
                                 <FormControl>
-                                    <input disabled={loading} placeholder="Store name" {...field} />
+                                    <input disabled={loading} placeholder="Billboard label" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -131,16 +135,11 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
                         />
                     </div>
                     <Button disabled={loading} className="ml-auto" type="submit">
-                        Save changes
+                        {action}
                     </Button>
                 </form>
             </Form>
             <Separator />
-            <ApiAlert
-            title="NEXT_PUBLIC_API_URL"
-            description={`${origin}/api/${params.storeId}`}
-            variant={"public"}
-            />
         </>
     );
 };
