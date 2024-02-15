@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 interface ImageUploadProps {
     disabled?: boolean;
@@ -33,8 +34,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         <div>
             <div className="mb-4 flex items-center gap-4">
                 {value.map((url) => (
-                    <div key={url}>
-
+                    <div key={url} className="relative w-[200px] h-[200px] rounded-md overflow-hidden">
+                        <Button></Button>
                     </div>
                 ))}
             </div>
