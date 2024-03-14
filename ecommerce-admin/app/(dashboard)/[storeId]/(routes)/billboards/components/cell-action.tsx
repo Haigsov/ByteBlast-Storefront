@@ -46,10 +46,9 @@ export const CellAction: React.FC<CellActionProps> = ({
     const onDelete = async () => {
         try {
             setLoading(true);
-            await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
+            await axios.delete(`/api/${params.storeId}/billboards/${data.id}`);
             router.refresh();
             toast.success("Billboard deleted.");
-            router.push("/");
         } catch (error) {
             toast.error("Make sure you removed all categories using this billboard first.");
         } finally {
@@ -85,7 +84,7 @@ export const CellAction: React.FC<CellActionProps> = ({
                         <Edit className="mr-2 h-4 w-4"/>
                         Update
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setOpen(true)}>
                         <Trash className="mr-2 h-4 w-4"/>
                         Delete
                     </DropdownMenuItem>
