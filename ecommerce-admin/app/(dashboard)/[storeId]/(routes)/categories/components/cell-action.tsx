@@ -10,7 +10,6 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { BillboardColumn } from "./columns";
 import { useState } from "react";
 import { AlertModal } from "@/components/modals/alert-modals";
 
@@ -23,9 +22,10 @@ import {
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
+import { CategoryColumn } from "./columns";
 
 interface CellActionProps {
-    data: BillboardColumn
+    data: CategoryColumn
 }
 
 
