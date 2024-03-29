@@ -38,7 +38,7 @@ interface BillboardFormProps {
     initialData: Billboard | null;
 };
 
-export const BillboardForm: React.FC<BillboardFormProps> = ({
+export const CategoryForm: React.FC<BillboardFormProps> = ({
     initialData
 }) => {
     const params = useParams();
