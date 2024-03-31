@@ -2,7 +2,7 @@
 
 import { Trash } from "lucide-react";
 import * as z from "zod";
-import { Category } from "@prisma/client";
+import { Billboard, Category } from "@prisma/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { use, useState } from "react";
@@ -25,7 +25,12 @@ import {
     FormMessage
 } from "@/components/ui/form";
 import { AlertModal } from "@/components/modals/alert-modals";
-import { Select, SelectTrigger } from "@/components/ui/select";
+import {
+    Select,
+    SelectContent,
+    SelectTrigger,
+    SelectValue
+} from "@/components/ui/select";
 
 const formSchema = z.object({
     name: z.string().min(1),
@@ -36,6 +41,7 @@ type CategoryFormValues = z.infer<typeof formSchema>;
 
 interface CategoryFormProps {
     initialData: Category | null;
+    billboards: Billboard[];
 };
 
 export const CategoryForm: React.FC<CategoryFormProps> = ({
@@ -145,10 +151,15 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                                 >
                                     <FormControl>
                                         <SelectTrigger>
-                                            
+                                            <SelectValue
+                                                defaultValue={field.value}
+                                                placeholder="Select a billboard"
+                                            />
                                         </SelectTrigger>
-                                    </FormControl>   
+                                    </FormControl>
+                                    <SelectContent>
 
+                                    </SelectContent>
                                 </Select>
                                 <FormMessage />
                             </FormItem>
