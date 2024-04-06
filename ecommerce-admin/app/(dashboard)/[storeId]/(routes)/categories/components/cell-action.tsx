@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { AlertModal } from "@/components/modals/alert-modals";
+import { AlertModal } from "@/components/modals/alert-modal";
 
 // Global imports
 import {

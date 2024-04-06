@@ -24,7 +24,7 @@ import {
     FormLabel,
     FormMessage
 } from "@/components/ui/form";
-import { AlertModal } from "@/components/modals/alert-modals";
+import { AlertModal } from "@/components/modals/alert-modal";
 import {
     Select,
     SelectContent,

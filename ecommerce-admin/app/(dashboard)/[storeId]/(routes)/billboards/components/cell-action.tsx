@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { BillboardColumn } from "./columns";
 import { useState } from "react";
-import { AlertModal } from "@/components/modals/alert-modals";
+import { AlertModal } from "@/components/modals/alert-modal";
 
 // Global imports
 import {
