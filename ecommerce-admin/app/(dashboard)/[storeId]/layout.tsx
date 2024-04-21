@@ -4,6 +4,13 @@ import prismadb from "@/lib/prismadb";
 
 import Navbar from "@/components/navbar";
 
+/**
+ * Renders the layout for the dashboard page.
+ *
+ * @param children - The child components to render within the layout.
+ * @param params - The parameters for the layout, including the storeId.
+ * @returns The rendered layout component.
+ */
 export default async function DashboardLayout({
     children,
     params
